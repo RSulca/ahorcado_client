@@ -1,13 +1,12 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { WordsService } from './services/words.service';
+import { Component, OnInit } from '@angular/core';
+import { WordsService } from '../../services/words.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-mantenimiento',
+  templateUrl: './mantenimiento.component.html',
+  styleUrls: ['./mantenimiento.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Ahorcado';
+export class MantenimientoComponent implements OnInit {
 
   words: any[] = [];
 
@@ -25,7 +24,10 @@ export class AppComponent implements OnInit {
   }
 
   createWord(word: any) {
-    this._word.createWord(word.value).subscribe(res => {
+    if(word.value===""){
+      return;
+    }
+    this._word.createWord(word.value.toLowerCase()).subscribe(res => {
       this.getWords();
       word.value = "";
     });
@@ -36,5 +38,6 @@ export class AppComponent implements OnInit {
       this.getWords()
     });
   }
+
 
 }

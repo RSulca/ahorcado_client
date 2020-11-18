@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input class="col-md-8" #word (keyup.enter)="createWord(word)" type="text" class="form-control" name="txtWord" id="txtWord" placeholder="Palabra">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button (click)="createWord(word)" class="btn btn-success d-block w-100">Agregar</button>
+                </div>
+            </div>
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Palabra</th>
+                        <th class="text-center">Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let word of words">
+                        <td scope="row">{{word.id}}</td>
+                        <td>{{word.word}}</td>
+                        <td class="text-center"><i id="trash" (click)="delete(word.id)" class="fa fa-trash text-danger"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

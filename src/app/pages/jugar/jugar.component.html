@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <img [src]="'../assets/img/'+img+'.png'" class="col-md-12 img-fluid px-0" alt="Error">
+            <button (click)="jugar()" [disabled]="iniciado" class="btn mt-2 btn-primary py-2 text-center btn-block">Jugar</button>
+        </div>
+        <div class="col-md-5">
+            <div class="show mt-3">
+                <div class="h5">
+                    Adivina la palabra: {{palabraActual | show:show }} <i class="fa fa-eye eye" (click)="mostrar()"></i>
+                </div>
+                <div class="text-center mt-5">
+                    <span class="px-3 display-3" *ngFor="let item of cadena">{{item}}</span>
+                </div>
+            </div>
+            <div class="guess mt-5">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <input #letra class="form-control" [disabled]="!iniciado" (keyup.enter)="revisar(letra)" maxlength="1" type="text" placeholder="Letra">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <button (click)="revisar(letra)" [disabled]="!iniciado" class="btn btn-primary col-md-8">Revisar</button>
+                            <button (click)="reset()" class="btn btn-danger col-md-3 px-0 ml-2"><i class="fa fa-sync"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-0">
+                    <div class="col-12 text-center">
+                        <span *ngFor="let letra of letrasIngresadas" class="px-1 display-4">{{letra}}</span>
+                    </div>
+                    <div class="col-12 px-0 mt-4">
+                        <div class="buenas">
+                            Intentos fallidos: {{cMalas}}
+                        </div>
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                        <div class="h5">Dificultad</div>
+                        <button class="btn mx-1 btn-warning" [disabled]="iniciado" (click)="img=0">Fácil</button>
+                        <button class="btn mx-1 btn-warning" [disabled]="iniciado" (click)="img=4">Dificil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
